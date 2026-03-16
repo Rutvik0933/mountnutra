@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountnutra | Premium Wellness & Nutrition</title>
+    <meta name="description" content="Discover pure, clean, and clinically formulated wellness with Mountnutra. Shop our premium range of effervescent tablets for energy, skin, immunity, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Mount<span>nutra</span></a>
+            
+            <nav class="nav-links">
+                <a href="#shop">Shop</a>
+                <a href="collections.html">Collections</a>
+                <a href="#about">About</a>
+                <a href="#testimonials">Reviews</a>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products..." aria-label="Search">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <a href="#" class="icon-link track-order-link" aria-label="Track Order">
+                    <i class="fas fa-shipping-fast"></i> <span class="d-none-mobile">Track Order</span>
+                </a>
+                <a href="#" class="icon-link" aria-label="Account"><i class="far fa-user"></i></a>
+                <a href="#" class="icon-link cart-icon" aria-label="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <h3>Menu</h3>
+            <button class="close-menu-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="mobile-nav-links">
+            <a href="#shop">Shop</a>
+            <a href="#about">About</a>
+            <a href="#testimonials">Reviews</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+        <div class="hero-content">
+            <span class="hero-badge">100% Authentic & Pure</span>
+            <h1 class="hero-title">Wellness Designed for <br><span class="gradient-text">Real Lives</span></h1>
+            <p class="hero-subtitle">Clinically formulated, clean nutrition crafted for effectiveness and taste. Experience a truly superior wellness journey.</p>
+            <div class="hero-cta-group">
+                <a href="#shop" class="btn btn-primary">Shop Now</a>
+                <a href="#about" class="btn btn-secondary">Our Story</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-num">50k+</span>
+                    <span class="stat-label">Happy Customers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">Natural Ingredients</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image-wrapper">
+            <!-- Main Hero Image (Placeholder for now) -->
+            <div class="hero-image-card">
+                <div class="hero-image-placeholder" id="hero-main-img">
+                    <img src="assets/hero.png" alt="Mountnutra Premium Wellness">
+                </div>
+                <div class="floating-badge badge-1">
+                    <i class="fas fa-check-circle"></i> Clinically Proven
+                </div>
+                <div class="floating-badge badge-2">
+                    <i class="fas fa-star"></i> 4.9/5 Rating
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop By Goal -->
+    <section class="shop-by-goal section-padding" id="shop">
+        <div class="section-header text-center">
+            <h2 class="section-title">Shop By <span class="gradient-text">Health Goal</span></h2>
+            <p class="section-description">Targeted solutions for your specific wellness needs.</p>
+        </div>
+        <div class="goal-grid">
+            <a href="#" class="goal-card">
+                <div class="goal-icon"><i class="fas fa-fire"></i></div>
+                <h3>Metabolism Support</h3>
+            </a>
+            <a href="#" class="goal-card">
+                <div class="goal-icon"><i class="fas fa-spa"></i></div>
+                <h3>Skin & Glow</h3>
+            </a>
+            <a href="#" class="goal-card">
+                <div class="goal-icon"><i class="fas fa-shield-virus"></i></div>
+                <h3>Immune Support</h3>
+            </a>
+            <a href="#" class="goal-card">
+                <div class="goal-icon"><i class="fas fa-bolt"></i></div>
+                <h3>Hydration & Energy</h3>
+            </a>
+            <a href="#" class="goal-card">
+                <div class="goal-icon"><i class="fas fa-leaf"></i></div>
+                <h3>Body & Cleanse</h3>
+            </a>
+            <a href="#" class="goal-card">
+                <div class="goal-icon"><i class="fas fa-moon"></i></div>
+                <h3>Sleep & Calm</h3>
+            </a>
+        </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="best-sellers section-padding bg-light-pink">
+        <div class="section-header text-center">
+            <h2 class="section-title">Our <span class="gradient-text">Best Sellers</span></h2>
+            <p class="section-description">Discover the products our community loves the most.</p>
+        </div>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image-container original-img-container">
+                    <div class="product-badge">Sale</div>
+                    <div class="product-image-placeholder" id="prod-img-1">
+                        <img src="assets/lung_detox.png" alt="Lung Detox Apple Breeze">
+                    </div>
+                    <div class="hover-overlay" style="background: rgba(230, 245, 235, 0.95);">
+                        <div class="hover-search-btn"><i class="fas fa-search"></i></div>
+                        <div class="hover-content">
+                            <h4 class="hover-title" style="color: #2e7d32;">Breathe Easy Daily</h4>
+                            <p class="hover-subtitle" style="color: #4caf50;">Respiratory Support</p>
+                        </div>
+                        <button class="quick-add-btn">Add To Cart</button>
+                    </div>
+                </div>
+                <div class="product-info text-center">
+                    <h3 class="product-title truncate-2 font-outfit">MOUNTNUTRA LUNG DETOX | Apple Breeze</h3>
+                    <div class="product-footer justify-content-center">
+                        <div class="price-wrapper">
+                            <span class="price text-accent">₹199.00</span>
+                            <span class="old-price">₹499.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image-container original-img-container">
+                    <div class="product-badge">Sale</div>
+                    <div class="product-image-placeholder" id="prod-img-2">
+                        <img src="assets/super_greens.png" alt="Super Greens Jamun Burst">
+                    </div>
+                    <div class="hover-overlay" style="background: rgba(220, 210, 235, 0.95);">
+                        <div class="hover-search-btn"><i class="fas fa-search"></i></div>
+                        <div class="hover-content">
+                            <h4 class="hover-title" style="color: #4a3b69;">Your Whole Farm In One Glass</h4>
+                            <p class="hover-subtitle" style="color: #388e3c;">10 Superfoods</p>
+                        </div>
+                        <button class="quick-add-btn">Add To Cart</button>
+                    </div>
+                </div>
+                <div class="product-info text-center">
+                    <h3 class="product-title truncate-2 font-outfit">MOUNTNUTRA SUPER GREENS | Jamun Burst</h3>
+                    <div class="product-footer justify-content-center">
+                        <div class="price-wrapper">
+                            <span class="price text-accent">₹349.00</span>
+                            <span class="old-price">₹549.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image-container original-img-container">
+                    <div class="product-badge">Sale</div>
+                    <div class="product-image-placeholder" id="prod-img-3">
+                        <img src="assets/acv_moringa.png" alt="ACV Moringa Zesty Pineapple">
+                    </div>
+                    <div class="hover-overlay" style="background: rgba(255, 245, 220, 0.95);">
+                        <div class="hover-search-btn"><i class="fas fa-search"></i></div>
+                        <div class="hover-content">
+                            <h4 class="hover-title" style="color: #f57f17;">Weight Management</h4>
+                            <p class="hover-subtitle" style="color: #ffb300;">Natural Detox</p>
+                        </div>
+                        <button class="quick-add-btn">Add To Cart</button>
+                    </div>
+                </div>
+                <div class="product-info text-center">
+                    <h3 class="product-title truncate-2 font-outfit">MOUNTNUTRA ACV MORINGA | Zesty Pineapple</h3>
+                    <div class="product-footer justify-content-center">
+                        <div class="price-wrapper">
+                            <span class="price text-accent">₹329.00</span>
+                            <span class="old-price">₹549.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image-container original-img-container">
+                    <div class="product-badge">Sale</div>
+                    <div class="product-image-placeholder" id="prod-img-4">
+                        <img src="assets/sleep_restore.png" alt="Sleep Restore Blueberry Lavender">
+                    </div>
+                    <div class="hover-overlay" style="background: rgba(230, 235, 255, 0.95);">
+                        <div class="hover-search-btn"><i class="fas fa-search"></i></div>
+                        <div class="hover-content">
+                            <h4 class="hover-title" style="color: #283593;">Deep Restful Sleep</h4>
+                            <p class="hover-subtitle" style="color: #5c6bc0;">Relax & Restore</p>
+                        </div>
+                        <button class="quick-add-btn">Add To Cart</button>
+                    </div>
+                </div>
+                <div class="product-info text-center">
+                    <h3 class="product-title truncate-2 font-outfit">MOUNTNUTRA SLEEP RESTORE | Blueberry Lavender</h3>
+                    <div class="product-footer justify-content-center">
+                        <div class="price-wrapper">
+                            <span class="price text-accent">₹239.00</span>
+                            <span class="old-price">₹369.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Amazon Product 1 -->
+            <div class="product-card">
+                <div class="product-image-container amazon-img-container">
+                    <div class="product-badge">Top Rated</div>
+                    <div class="product-image-placeholder" id="prod-img-5">
+                        <img src="https://m.media-amazon.com/images/I/71UILOeDzgL._AC_CR0%2C0%2C0%2C0_SX750_.jpg" alt="Biotin Gummies Multivitamins">
+                    </div>
+                    <button class="quick-add-btn" aria-label="Add to cart">Add To Cart</button>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title truncate-2">MOUNTNUTRA Biotin Gummies Multivitamins for Hair, Skin & Nails</h3>
+                    <p class="product-features">Gluten Free • Vegan • 30 Gummies</p>
+                    <div class="product-footer">
+                        <div class="price-wrapper">
+                            <span class="price">₹549</span>
+                            <span class="old-price">₹799</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i> 4.8 (120+)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Amazon Product 2 -->
+            <div class="product-card">
+                <div class="product-image-container amazon-img-container">
+                    <div class="product-image-placeholder" id="prod-img-6">
+                        <img src="https://m.media-amazon.com/images/I/71Bi-nNIrKL._AC_CR0%2C0%2C0%2C0_SX750_.jpg" alt="Ashwagandha Gummies">
+                    </div>
+                    <button class="quick-add-btn" aria-label="Add to cart">Add To Cart</button>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title truncate-2">MOUNTNUTRA Ashwagandha Gummies (Sugar Free)</h3>
+                    <p class="product-features">Stress Relief • Improves Strength</p>
+                    <div class="product-footer">
+                        <div class="price-wrapper">
+                            <span class="price">₹599</span>
+                            <span class="old-price">₹849</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i> 4.7 (210)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Amazon Product 3 -->
+            <div class="product-card">
+                <div class="product-image-container amazon-img-container">
+                    <div class="product-image-placeholder" id="prod-img-7">
+                        <img src="https://m.media-amazon.com/images/I/71pAkaR76iL._AC_CR0%2C0%2C0%2C0_SX480_SY360_.jpg" alt="Easy Sleep+ Melatonin">
+                    </div>
+                    <button class="quick-add-btn" aria-label="Add to cart">Add To Cart</button>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title truncate-2">MOUNTNUTRA Easy Sleep+ | Melatonin 5mg and Valerian Root Gummies</h3>
+                    <p class="product-features">Natural Sleep Aid • Sugar-Free</p>
+                    <div class="product-footer">
+                        <div class="price-wrapper">
+                            <span class="price">₹499</span>
+                            <span class="old-price">₹699</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i> 4.9 (85)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Amazon Product 4 -->
+            <div class="product-card">
+                <div class="product-image-container amazon-img-container">
+                    <div class="product-badge">Value Pack</div>
+                    <div class="product-image-placeholder" id="prod-img-8">
+                        <img src="https://m.media-amazon.com/images/I/81lud2LGftL._AC_CR0%2C0%2C0%2C0_SX750_.jpg" alt="Multivitamin Gummies">
+                    </div>
+                    <button class="quick-add-btn" aria-label="Add to cart">Add To Cart</button>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title truncate-2">MOUNTNUTRA Multivitamin Gummies for Kids & Adults</h3>
+                    <p class="product-features">Pack of 2 • 60 Gummies</p>
+                    <div class="product-footer">
+                        <div class="price-wrapper">
+                            <span class="price">₹899</span>
+                            <span class="old-price">₹1099</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i> 4.8 (110)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-outline">View All Products</a>
+        </div>
+    </section>
+
+    <!-- Why Mountnutra -->
+    <section class="why-us section-padding" id="about">
+        <div class="why-wrapper">
+            <div class="why-image">
+                <div class="blob-shape">
+                    <!-- Image placeholder -->
+                </div>
+            </div>
+            <div class="why-content">
+                <h2 class="section-title">Why <span class="gradient-text">Mountnutra?</span></h2>
+                <p class="section-description">Because being true to wellness means being true to you. Our approach to wellness is rooted in truth and simplicity.</p>
+                
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-flask"></i></div>
+                        <div class="feature-text">
+                            <h4>Clinically Formulated</h4>
+                            <p>Science-backed ingredients, measured with precision.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-tint"></i></div>
+                        <div class="feature-text">
+                            <h4>Pure & Transparent</h4>
+                            <p>No hidden blends, no unnecessary additives.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-infinity"></i></div>
+                        <div class="feature-text">
+                            <h4>Seamless Lifestyle</h4>
+                            <p>Designed to complement your daily routine smoothly.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-award"></i></div>
+                        <div class="feature-text">
+                            <h4>Premium Quality</h4>
+                            <p>Meticulously crafted for effectiveness and taste.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials section-padding bg-light-pink" id="testimonials">
+        <div class="section-header text-center">
+            <h2 class="section-title">What Clients <span class="gradient-text">Talk About Us</span></h2>
+            <p class="section-description">Real stories from our beloved community.</p>
+        </div>
+        
+        <div class="testimonial-slider-container">
+            <div class="testimonial-slider" id="testimonialSlider">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"I struggled with bloating for a long time, but ACV Moringa has made a noticeable difference. It’s so much easier to drink this than plain ACV, and it tastes surprisingly good."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar pl-1">PS</div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"Within a few weeks of using Radiant Skin, my skin started looking clearer and more hydrated. I love that it’s sugar-free and still tastes like a treat."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar pl-2">RM</div>
+                        <div class="author-info">
+                            <h4>Rohan Mehta</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"Getting my daily greens was always a task, but now I just drop a tablet in water, and it’s done. Super Greens has made my digestion smoother."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar pl-3">NI</div>
+                        <div class="author-info">
+                            <h4>Neha Iyer</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn" id="prevBtn" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn" id="nextBtn" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="trust-badges">
+        <div class="trust-container">
+            <div class="trust-item">
+                <i class="fas fa-check-circle"></i>
+                <span>100% Authentic</span>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-headset"></i>
+                <span>Customer Support</span>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-lock"></i>
+                <span>Secure Payment</span>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-shipping-fast"></i>
+                <span>Fast Shipping</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <a href="#" class="logo footer-logo">Mount<span>nutra</span></a>
+                <p>Wellness can be complicated; we make it honest. Because being true to wellness means being true to you.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="#">Body & Cleanse</a></li>
+                    <li><a href="#">Skin & Glow</a></li>
+                    <li><a href="#">Sleep & Calm</a></li>
+                    <li><a href="#">Metabolism Support</a></li>
+                    <li><a href="#">Immune Support</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Why Effervescent?</a></li>
+                    <li><a href="#">Track Your Order</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="mailto:support@mountnutra.in"><i class="far fa-envelope"></i> support@mountnutra.in</a></li>
+                    <li><a href="tel:1234567890"><i class="fas fa-phone-alt"></i> +91 12345 67890</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2026 Mountnutra. All rights reserved.</p>
+                <div class="policy-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Refund Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your cart (<span class="cart-count">0</span>)</h3>
+            <button class="close-cart-btn" id="closeCartBtn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-promo">
+            <p>You are eligible for free shipping.</p>
+            <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+        </div>
+        <div class="cart-items" id="cartItemsContainer">
+            <!-- Items injected by JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-actions">
+                <button class="btn btn-outline" style="flex:1;">View Cart</button>
+                <button class="btn btn-primary" id="checkoutBtn" style="flex:2;">Check Out <span id="cartTotalPrice">₹0</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal (Customer Details) -->
+    <div class="checkout-overlay" id="checkoutOverlay"></div>
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-header">
+            <h3>Customer Details</h3>
+            <button class="close-cart-btn" id="closeCheckoutBtn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="checkout-body">
+            <form id="checkoutForm">
+                <div class="checkout-form-grid">
+                    <div class="form-group full-width">
+                        <label for="c_name">Full Name</label>
+                        <input type="text" id="c_name" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="c_email">Email Address</label>
+                        <input type="email" id="c_email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="c_phone">Phone Number</label>
+                        <input type="tel" id="c_phone" required placeholder="Enter your phone">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="c_address">Address Line / Landmark</label>
+                        <input type="text" id="c_address" required placeholder="House No, Building, Landmark">
+                    </div>
+                    <div class="form-group">
+                        <label for="c_street">Area / Street</label>
+                        <input type="text" id="c_street" required placeholder="Street name">
+                    </div>
+                    <div class="form-group">
+                        <label for="c_pincode">Pincode</label>
+                        <input type="text" id="c_pincode" required placeholder="6-digit code">
+                    </div>
+                    <div class="form-group">
+                        <label for="c_city">City</label>
+                        <input type="text" id="c_city" required placeholder="City name">
+                    </div>
+                    <div class="form-group">
+                        <label for="c_state">State</label>
+                        <select id="c_state" required>
+                            <option value="">Select State</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                            <option value="Assam">Assam</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Chhattisgarh">Chhattisgarh</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Haryana">Haryana</option>
+                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                            <option value="Jharkhand">Jharkhand</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Manipur">Manipur</option>
+                            <option value="Meghalaya">Meghalaya</option>
+                            <option value="Mizoram">Mizoram</option>
+                            <option value="Nagaland">Nagaland</option>
+                            <option value="Odisha">Odisha</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Sikkim">Sikkim</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Tripura">Tripura</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="Uttarakhand">Uttarakhand</option>
+                            <option value="West Bengal">West Bengal</option>
+                            <option value="Delhi">Delhi</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="c_country">Country</label>
+                        <select id="c_country" required disabled>
+                            <option value="India" selected>India</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="payment-options-group">
+                    <label style="font-weight: 700; margin-bottom: 0.5rem; display: block;">Select Payment Method</label>
+                    <label class="payment-radio-item">
+                        <input type="radio" name="payment_method" value="online" checked>
+                        <i class="fas fa-credit-card"></i>
+                        <span class="payment-radio-label">Online Payment (UPI/Card)</span>
+                    </label>
+                    <label class="payment-radio-item">
+                        <input type="radio" name="payment_method" value="cod">
+                        <i class="fas fa-truck"></i>
+                        <span class="payment-radio-label">Cash on Delivery</span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100" id="confirmOrderBtn">
+                    <span class="btn-text">Confirm Order - <span id="checkoutTotalPrice">₹0</span></span>
+                    <span class="spinner" style="display:none;"><i class="fas fa-spinner fa-spin"></i></span>
+                </button>
+            </form>
+            <div class="checkout-success" id="checkoutSuccessMessage" style="display:none;">
+                <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                <h2>Order Confirmed!</h2>
+                <p>Your order ID is <strong id="successOrderId"></strong>.</p>
+                <p>You will receive a confirmation email shortly.</p>
+                <button class="btn btn-primary mt-4" id="continueShoppingBtn">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
