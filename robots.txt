@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mountnutra.rutvik-rushkar.workers.dev/sitemap.xml
+Sitemap: https://www.mountnutra.in/sitemap.xml
