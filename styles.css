@@ -5,14 +5,14 @@
 
 :root {
     /* Color Palette */
-    --primary: #D32F2F; /* Brand Red */
-    --primary-light: #FFCDD2;
-    --primary-dark: #C62828;
-    --primary-accent: #D50000; /* For highlights/buttons */
+    --primary: #C92127; /* Deep Brand Red */
+    --primary-light: #FDE8EA; /* Extremely soft red for subtle hints */
+    --primary-dark: #A5171D; /* Darker red for hovers */
+    --primary-accent: #E61B23; /* Striking bright red for CTAs */
     
     --bg-white: #FFFFFF;
-    --bg-light-red: #FFEBEE; /* Light Red Blush */
-    --bg-off-white: #FAFAFA;
+    --bg-light-red: #FCF4F4; /* Very subtle warm off-white, no pink */
+    --bg-off-white: #F8F9FA;
     
     --text-main: #2D3748; /* Dark grey for readability */
     --text-muted: #718096;
@@ -22,9 +22,9 @@
     --gradient-text: linear-gradient(to right, var(--primary-accent), var(--primary-dark));
     
     /* Shadows */
-    --shadow-sm: 0 4px 6px rgba(211, 47, 47, 0.08); /* Brand Red */
-    --shadow-md: 0 10px 20px rgba(211, 47, 47, 0.12);
-    --shadow-lg: 0 20px 40px rgba(211, 47, 47, 0.15);
+    --shadow-sm: 0 4px 6px rgba(201, 33, 39, 0.08); /* Soft Red Shadow */
+    --shadow-md: 0 10px 20px rgba(201, 33, 39, 0.12);
+    --shadow-lg: 0 20px 40px rgba(201, 33, 39, 0.15);
     
     /* Typography */
     --font-heading: 'Outfit', sans-serif;
@@ -189,7 +189,7 @@ img {
     -webkit-backdrop-filter: blur(10px);
     z-index: 1000;
     transition: var(--transition);
-    border-bottom: 1px solid rgba(211, 47, 47, 0.2);
+    border-bottom: 1px solid rgba(201, 33, 39, 0.15);
 }
 
 .navbar.scrolled {
@@ -419,7 +419,7 @@ img {
     right: -5%;
     width: 600px;
     height: 600px;
-    background: rgba(255, 205, 210, 0.5); /* var(--primary-light) */
+    background: rgba(201, 33, 39, 0.05); /* very soft red */
     animation: float 10s ease-in-out infinite alternate;
 }
 
@@ -428,7 +428,7 @@ img {
     left: -10%;
     width: 400px;
     height: 400px;
-    background: rgba(198, 40, 40, 0.3); /* var(--primary-dark) */
+    background: rgba(201, 33, 39, 0.08); /* slightly stronger soft red */
     animation: float 12s ease-in-out infinite alternate-reverse;
 }
 
@@ -452,7 +452,7 @@ img {
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
-    border: 1px solid rgba(211, 47, 47, 0.5);
+    border: 1px solid rgba(201, 33, 39, 0.2);
     animation: slideUp 0.8s ease backwards;
 }
 
@@ -1059,9 +1059,9 @@ img {
     font-family: var(--font-heading);
 }
 
-.pl-1 { background: #FFB6C1; }
-.pl-2 { background: #81C784; }
-.pl-3 { background: #64B5F6; }
+.pl-1 { background: var(--primary); }
+.pl-2 { background: var(--text-main); }
+.pl-3 { background: var(--primary-accent); }
 
 .author-info h4 {
     font-size: 1rem;
