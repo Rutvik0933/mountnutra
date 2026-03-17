@@ -5,13 +5,13 @@
 
 :root {
     /* Color Palette */
-    --primary: #FFB6C1; /* Light Pink */
-    --primary-light: #FFD1DC;
-    --primary-dark: #F48FB1;
-    --primary-accent: #E91E63; /* For highlights/buttons */
+    --primary: #D32F2F; /* Brand Red */
+    --primary-light: #FFCDD2;
+    --primary-dark: #C62828;
+    --primary-accent: #D50000; /* For highlights/buttons */
     
     --bg-white: #FFFFFF;
-    --bg-light-pink: #FFF0F5; /* Lavender Blush */
+    --bg-light-red: #FFEBEE; /* Light Red Blush */
     --bg-off-white: #FAFAFA;
     
     --text-main: #2D3748; /* Dark grey for readability */
@@ -22,9 +22,9 @@
     --gradient-text: linear-gradient(to right, var(--primary-accent), var(--primary-dark));
     
     /* Shadows */
-    --shadow-sm: 0 4px 6px rgba(244, 143, 177, 0.08);
-    --shadow-md: 0 10px 20px rgba(244, 143, 177, 0.12);
-    --shadow-lg: 0 20px 40px rgba(244, 143, 177, 0.15);
+    --shadow-sm: 0 4px 6px rgba(211, 47, 47, 0.08); /* Brand Red */
+    --shadow-md: 0 10px 20px rgba(211, 47, 47, 0.12);
+    --shadow-lg: 0 20px 40px rgba(211, 47, 47, 0.15);
     
     /* Typography */
     --font-heading: 'Outfit', sans-serif;
@@ -100,8 +100,8 @@ img {
     margin-top: 2rem;
 }
 
-.bg-light-pink {
-    background-color: var(--bg-light-pink);
+.bg-light-red {
+    background-color: var(--bg-light-red);
 }
 
 .gradient-text {
@@ -163,7 +163,7 @@ img {
 }
 
 .btn-secondary:hover {
-    background-color: var(--bg-light-pink);
+    background-color: var(--bg-light-red);
     border-color: var(--primary-dark);
 }
 
@@ -189,7 +189,7 @@ img {
     -webkit-backdrop-filter: blur(10px);
     z-index: 1000;
     transition: var(--transition);
-    border-bottom: 1px solid rgba(255, 182, 193, 0.2);
+    border-bottom: 1px solid rgba(211, 47, 47, 0.2);
 }
 
 .navbar.scrolled {
@@ -352,7 +352,7 @@ img {
     align-items: center;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--bg-light-pink);
+    border-bottom: 1px solid var(--bg-light-red);
 }
 
 .close-menu-btn {
@@ -419,7 +419,7 @@ img {
     right: -5%;
     width: 600px;
     height: 600px;
-    background: rgba(255, 209, 220, 0.5); /* var(--primary-light) */
+    background: rgba(255, 205, 210, 0.5); /* var(--primary-light) */
     animation: float 10s ease-in-out infinite alternate;
 }
 
@@ -428,7 +428,7 @@ img {
     left: -10%;
     width: 400px;
     height: 400px;
-    background: rgba(244, 143, 177, 0.3); /* var(--primary-dark) */
+    background: rgba(198, 40, 40, 0.3); /* var(--primary-dark) */
     animation: float 12s ease-in-out infinite alternate-reverse;
 }
 
@@ -446,13 +446,13 @@ img {
 .hero-badge {
     display: inline-block;
     padding: 0.5rem 1rem;
-    background: var(--bg-light-pink);
+    background: var(--bg-light-red);
     color: var(--primary-accent);
     border-radius: var(--radius-full);
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
-    border: 1px solid rgba(255, 182, 193, 0.5);
+    border: 1px solid rgba(211, 47, 47, 0.5);
     animation: slideUp 0.8s ease backwards;
 }
 
@@ -636,7 +636,7 @@ img {
     transform: translateY(-5px);
     box-shadow: var(--shadow-md);
     border-color: var(--primary-light);
-    background: var(--bg-light-pink);
+    background: var(--bg-light-red);
 }
 
 .goal-icon {
@@ -946,7 +946,7 @@ img {
 }
 
 .feature-item:hover {
-    background: var(--bg-light-pink);
+    background: var(--bg-light-red);
     transform: translateX(10px);
 }
 
@@ -1177,7 +1177,7 @@ img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: var(--bg-light-pink);
+    background: var(--bg-light-red);
     color: var(--primary-accent);
     display: flex;
     align-items: center;
@@ -1381,7 +1381,7 @@ img {
 /* Collections Page Styles */
 .collection-header {
     padding: 140px 5% 60px;
-    background: var(--bg-light-pink);
+    background: var(--bg-light-red);
     border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
@@ -1411,7 +1411,7 @@ img {
     font-size: 1.2rem;
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--bg-light-pink);
+    border-bottom: 2px solid var(--bg-light-red);
 }
 
 .category-list {
@@ -1559,7 +1559,7 @@ img {
 .india-map {
     width: 100%;
     height: auto;
-    fill: var(--bg-light-pink);
+    fill: var(--bg-light-red);
     stroke: var(--primary-light);
     stroke-width: 2;
 }
@@ -1882,7 +1882,7 @@ img {
 
 .payment-radio-item:hover {
     border-color: var(--primary-light);
-    background: var(--bg-light-pink);
+    background: var(--bg-light-red);
 }
 
 .payment-radio-item input {
