@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-slate-50">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Mount Nutra</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="h-screen w-screen flex items-center justify-center font-['Plus_Jakarta_Sans'] bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+
+  <div class="w-full max-w-md bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-2xl relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-40 h-40 bg-rose-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+    <div class="absolute bottom-0 left-0 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl -ml-10 -mb-10"></div>
+
+    <div class="relative z-10 text-center mb-8">
+      <img src="../assets/images/logo.svg" alt="Mount Nutra" class="h-10 mx-auto mb-4 object-contain">
+      <h1 class="text-2xl font-extrabold text-slate-900 font-['Outfit']">Admin Portal</h1>
+      <p class="text-xs text-slate-500 mt-1">Sign in to manage your storefront</p>
+    </div>
+
+    <form onsubmit="handleAdminLogin(event)" class="relative z-10 space-y-5">
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Admin Email</label>
+        <input type="email" id="adminEmail" required
+          class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 focus:bg-white transition text-sm text-slate-900"
+          placeholder="admin@mountnutra.com">
+      </div>
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Password</label>
+        <div class="relative">
+          <input type="password" id="adminPass" required
+            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 focus:bg-white transition text-sm text-slate-900"
+            placeholder="••••••••">
+          <button type="button" onclick="togglePassVis()" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs font-semibold">Show</button>
+        </div>
+      </div>
+
+      <p id="errorMsg" class="text-rose-600 text-xs font-bold hidden text-center">❌ Invalid credentials. Please try again.</p>
+
+      <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 text-white font-bold rounded-xl shadow-lg transition transform active:scale-95 font-['Outfit']">
+        Login to Dashboard →
+      </button>
+    </form>
+
+    <div class="mt-6 text-center text-[10px] font-semibold text-slate-400 uppercase tracking-widest relative z-10">
+      🔒 Restricted Access — Authorized Personnel Only
+    </div>
+  </div>
+
+  <script>
+    function togglePassVis() {
+      const input = document.getElementById('adminPass');
+      const btn = event.target;
+      if (input.type === 'password') { input.type = 'text'; btn.innerText = 'Hide'; }
+      else { input.type = 'password'; btn.innerText = 'Show'; }
+    }
+
+    function getAdminCreds() {
+      return JSON.parse(localStorage.getItem('mount_nutra_admin_creds') || '{"email":"admin@mountnutra.com","password":"admin123","name":"Admin User"}');
+    }
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('adminEmail').value;
+      const pass = document.getElementById('adminPass').value;
+      const creds = getAdminCreds();
+
+      if (email === creds.email && pass === creds.password) {
+        sessionStorage.setItem('mount_nutra_admin_auth', 'true');
+        window.location.href = 'index.html';
+      } else {
+        document.getElementById('errorMsg').classList.remove('hidden');
+        setTimeout(() => document.getElementById('errorMsg').classList.add('hidden'), 4000);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-slate-50">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Mount Nutra</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#e31c3d',
+              blue: '#0252cf',
+              orange: '#ea580c',
+              green: '#15803d'
+            }
+          },
+          fontFamily: {
+            heading: ['Outfit', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body class="text-slate-800 font-body antialiased flex h-screen overflow-hidden">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-white border-r border-slate-200 flex flex-col h-full z-20 shadow-sm relative">
+    <div class="h-20 flex items-center px-6 border-b border-slate-100">
+      <img src="../assets/images/logo.svg" alt="Mount Nutra" class="h-8 object-contain">
+      <span
+        class="ml-2 text-xs font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200 uppercase">Admin</span>
+    </div>
+
+    <nav class="flex-1 overflow-y-auto py-6 px-4 space-y-1.5">
+      <a href="#" onclick="switchTab('dashboard')"
+        class="nav-link active flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition"
+        id="nav-dashboard">
+        <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Dashboard
+      </a>
+      <a href="#" onclick="switchTab('orders')"
+        class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition" id="nav-orders">
+        <i data-lucide="shopping-bag" class="w-5 h-5"></i> Orders
+        <span id="newOrdersBadge"
+          class="ml-auto bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm hidden">0</span>
+      </a>
+      <a href="#" onclick="switchTab('products')"
+        class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition"
+        id="nav-products">
+        <i data-lucide="package" class="w-5 h-5"></i> Products
+      </a>
+      <a href="#" onclick="switchTab('customers')"
+        class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition"
+        id="nav-customers">
+        <i data-lucide="users" class="w-5 h-5"></i> Customers
+      </a>
+      <a href="#" onclick="switchTab('promocodes')"
+        class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition"
+        id="nav-promocodes">
+        <i data-lucide="ticket" class="w-5 h-5"></i> Promo Codes
+      </a>
+      <a href="#" onclick="switchTab('offers')"
+        class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition" id="nav-offers">
+        <i data-lucide="megaphone" class="w-5 h-5"></i> Offers & Banners
+      </a>
+      <a href="#" onclick="switchTab('sitecontent')"
+        class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition"
+        id="nav-sitecontent">
+        <i data-lucide="edit" class="w-5 h-5"></i> Site Content
+      </a>
+      <a href="#" onclick="switchTab('adminprofile')"
+        class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition"
+        id="nav-adminprofile">
+        <i data-lucide="shield-check" class="w-5 h-5"></i> Admin Profile
+      </a>
+    </nav>
+
+    <div class="p-4 border-t border-slate-100">
+      <button onclick="logoutAdmin()"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-rose-600 hover:bg-rose-50 w-full transition">
+        <i data-lucide="log-out" class="w-5 h-5"></i> Logout
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+
+    <!-- Topbar -->
+    <header class="h-20 bg-white border-b border-slate-200 flex items-center justify-between px-8 z-10 shrink-0">
+      <div>
+        <h1 class="text-xl font-bold text-slate-900 font-heading" id="topbarTitle">Overview</h1>
+        <p class="text-xs text-slate-500" id="topbarSubtitle">Welcome back, Super Admin</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="../index.html" target="_blank"
+          class="hidden sm:flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold rounded-lg transition mr-2">
+          <i data-lucide="external-link" class="w-4 h-4"></i> View Site
+        </a>
+        <button class="relative p-2 text-slate-400 hover:text-slate-600 transition">
+          <i data-lucide="bell" class="w-5 h-5"></i>
+          <span id="bellNotifBadge" class="absolute top-1.5 right-1.5 w-4 h-4 bg-rose-500 rounded-full text-white text-[9px] font-bold flex items-center justify-center hidden">0</span>
+        </button>
+        <div class="flex items-center gap-3 pl-4 border-l border-slate-200">
+          <div class="text-right">
+            <div class="text-sm font-bold text-slate-900">Admin User</div>
+            <div class="text-xs text-slate-500">care@mountnutra.com</div>
+          </div>
+          <div
+            class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 border border-slate-300">
+            A
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Scrollable Area -->
+    <div class="flex-1 overflow-y-auto p-8 relative" id="mainScrollArea">
+
+      <!-- DASHBOARD TAB -->
+      <div id="tab-dashboard" class="tab-content block animate-fade-in">
+        <!-- Stats Row -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+              <i data-lucide="indian-rupee" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Revenue</div>
+              <div class="text-2xl font-black text-slate-900" id="statRevenue">₹0</div>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+              <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Orders</div>
+              <div class="text-2xl font-black text-slate-900" id="statOrders">0</div>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+              <i data-lucide="users" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Unique Customers</div>
+              <div class="text-2xl font-black text-slate-900" id="statCustomers">0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Orders Preview -->
+        <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+          <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between">
+            <h2 class="text-lg font-bold text-slate-900 font-heading">Recent Orders</h2>
+            <button onclick="switchTab('orders')" class="text-sm font-semibold text-blue-600 hover:text-blue-700">View
+              All →</button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm text-slate-600">
+              <thead class="bg-slate-50 text-xs uppercase font-semibold text-slate-500 border-b border-slate-200">
+                <tr>
+                  <th class="px-6 py-3">Order ID</th>
+                  <th class="px-6 py-3">Customer</th>
+                  <th class="px-6 py-3">Date</th>
+                  <th class="px-6 py-3">Amount</th>
+                  <th class="px-6 py-3">Status</th>
+                </tr>
+              </thead>
+              <tbody id="recentOrdersTableBody" class="divide-y divide-slate-100">
+                <!-- Rendered via admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ORDERS TAB -->
+      <div id="tab-orders" class="tab-content hidden animate-fade-in">
+        <div
+          class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden flex flex-col h-[calc(100vh-180px)]">
+          <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between shrink-0">
+            <h2 class="text-lg font-bold text-slate-900 font-heading">All Orders</h2>
+            <div class="flex items-center gap-3">
+              <input type="text" id="orderSearch" placeholder="Search ID or Name..."
+                class="px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:border-blue-500 bg-slate-50">
+              <button onclick="renderOrdersTable()"
+                class="p-2 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600"><i
+                  data-lucide="refresh-cw" class="w-4 h-4"></i></button>
+            </div>
+          </div>
+          <div class="overflow-y-auto flex-1">
+            <table class="w-full text-left text-sm text-slate-600 relative">
+              <thead
+                class="bg-slate-50 text-xs uppercase font-semibold text-slate-500 border-b border-slate-200 sticky top-0 z-10 shadow-sm">
+                <tr>
+                  <th class="px-6 py-4">Order ID & Date</th>
+                  <th class="px-6 py-4">Customer Details</th>
+                  <th class="px-6 py-4">Items</th>
+                  <th class="px-6 py-4">Payment & Total</th>
+                  <th class="px-6 py-4">Status</th>
+                  <th class="px-6 py-4 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="allOrdersTableBody" class="divide-y divide-slate-100">
+                <!-- Rendered via admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCTS TAB -->
+      <div id="tab-products" class="tab-content hidden animate-fade-in">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-lg font-bold text-slate-900 font-heading">Manage Products</h2>
+          <button onclick="openAddModal()"
+            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-lg shadow-sm flex items-center gap-2 transition">
+            <i data-lucide="plus" class="w-4 h-4"></i> Add Product
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="productsAdminGrid">
+          <!-- Rendered via admin.js -->
+        </div>
+      </div>
+
+      <!-- SITE CONTENT TAB -->
+      <div id="tab-sitecontent" class="tab-content hidden animate-fade-in">
+        <div class="mb-6 flex items-center justify-between">
+          <div>
+            <h2 class="text-lg font-bold text-slate-900 font-heading">Manage Site Content</h2>
+            <p class="text-xs text-slate-500">Edit the main text shown on the storefront homepage.</p>
+          </div>
+          <button onclick="saveSiteContent()"
+            class="px-6 py-2 bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold rounded-xl shadow-md transition">
+            Save Content
+          </button>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
+          <div>
+            <h3 class="text-sm font-bold text-slate-800 border-b border-slate-100 pb-2 mb-4">Hero Section</h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Hero Title</label>
+                <input type="text" id="configHeroTitle"
+                  class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50"
+                  value="Elevate Your Daily Wellness with Clinical Nutrition">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Hero Subtitle</label>
+                <textarea id="configHeroSub" rows="2"
+                  class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50">Premium effervescent formulas designed for fast absorption, zero sugar, and maximum results.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-bold text-slate-800 border-b border-slate-100 pb-2 mb-4">Science Section</h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Science Heading</label>
+                <input type="text" id="configScienceTitle"
+                  class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50"
+                  value="The Science of Effervescence">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Science Text</label>
+                <textarea id="configScienceText" rows="2"
+                  class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50">Traditional pills can lose up to 50% of their nutrients during digestion. Mount Nutra's effervescent technology ensures 99% bioavailability within 15 minutes.</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CUSTOMERS TAB -->
+      <div id="tab-customers" class="tab-content hidden animate-fade-in">
+        <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden flex flex-col"
+          style="max-height: calc(100vh - 180px);">
+          <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between shrink-0">
+            <h2 class="text-lg font-bold text-slate-900 font-heading">All Customers</h2>
+            <span id="customerCount" class="text-xs text-slate-500 bg-slate-100 px-3 py-1 rounded-full font-semibold">0
+              registered</span>
+          </div>
+          <div class="overflow-y-auto flex-1">
+            <table class="w-full text-left text-sm text-slate-600">
+              <thead
+                class="bg-slate-50 text-xs uppercase font-semibold text-slate-500 border-b border-slate-200 sticky top-0">
+                <tr>
+                  <th class="px-6 py-4">Customer</th>
+                  <th class="px-6 py-4">Mobile</th>
+                  <th class="px-6 py-4">Registered On</th>
+                  <th class="px-6 py-4">Saved Addresses</th>
+                  <th class="px-6 py-4">Total Orders</th>
+                </tr>
+              </thead>
+              <tbody id="customersTableBody" class="divide-y divide-slate-100">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROMO CODES TAB -->
+      <div id="tab-promocodes" class="tab-content hidden animate-fade-in">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+
+          <!-- Create Code Form -->
+          <div class="lg:col-span-2">
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6">
+              <h2 class="text-base font-bold text-slate-900 font-heading mb-5">Create Promo Code</h2>
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Code Name *</label>
+                  <input type="text" id="newCodeName" placeholder="e.g. MOUNT20"
+                    class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm uppercase focus:border-blue-500 focus:outline-none bg-slate-50">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Discount Type *</label>
+                  <select id="newCodeType"
+                    class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+                    <option value="percent">Percentage (%) OFF</option>
+                    <option value="flat">Flat Amount (₹) OFF</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Discount Value *</label>
+                  <input type="number" id="newCodeValue" placeholder="e.g. 20 or 100" min="1"
+                    class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Min. Cart Value (₹)</label>
+                  <input type="number" id="newCodeMinOrder" placeholder="e.g. 500 (leave blank for none)" min="0"
+                    class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Expiry Date</label>
+                  <input type="date" id="newCodeExpiry"
+                    class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+                </div>
+                <div class="flex items-center gap-3">
+                  <input type="checkbox" id="newCodeActive" checked class="w-4 h-4 rounded">
+                  <label for="newCodeActive" class="text-sm font-semibold text-slate-700">Active (usable on
+                    storefront)</label>
+                </div>
+                <button onclick="createPromoCode()"
+                  class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm rounded-xl transition shadow">
+                  Create Promo Code
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Codes List -->
+          <div class="lg:col-span-3">
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+              <div class="px-6 py-5 border-b border-slate-100">
+                <h2 class="text-base font-bold text-slate-900 font-heading">All Promo Codes</h2>
+              </div>
+              <div id="promoCodesTable" class="divide-y divide-slate-100 max-h-[600px] overflow-y-auto">
+                <!-- Rendered by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OFFERS & BANNERS TAB -->
+      <div id="tab-offers" class="tab-content hidden animate-fade-in space-y-6">
+        <!-- Announcement Bar -->
+        <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6">
+          <div class="flex items-center justify-between mb-5 pb-3 border-b border-slate-100">
+            <div>
+              <h2 class="text-base font-bold text-slate-900 font-heading">Announcement Bar</h2>
+              <p class="text-xs text-slate-500">This is the top red/orange bar shown on the storefront.</p>
+            </div>
+            <button onclick="saveAnnouncementBar()"
+              class="px-6 py-2 bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold rounded-xl shadow transition">Save</button>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <input type="checkbox" id="announcementActive" checked class="w-4 h-4 rounded">
+              <label for="announcementActive" class="text-sm font-semibold text-slate-700">Show Announcement Bar on
+                Storefront</label>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Announcement Text</label>
+              <input type="text" id="announcementText"
+                class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50"
+                value="✨ SPECIAL LAUNCH OFFER: Use code MOUNT20 for Extra 20% OFF | Free Express Shipping on ₹500+">
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6">
+          <div class="flex items-center justify-between mb-5 pb-3 border-b border-slate-100">
+            <div>
+              <h2 class="text-base font-bold text-slate-900 font-heading">Social Media Links</h2>
+              <p class="text-xs text-slate-500">These appear in the footer of the storefront.</p>
+            </div>
+            <button onclick="saveSocialLinks()"
+              class="px-6 py-2 bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold rounded-xl shadow transition">Save</button>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">📷 Instagram URL</label>
+              <input type="url" id="socialInstagram" placeholder="https://instagram.com/mountnutra"
+                class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">💬 WhatsApp Number</label>
+              <input type="text" id="socialWhatsapp" placeholder="919876543210 (with country code, no +)"
+                class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">📘 Facebook URL</label>
+              <input type="url" id="socialFacebook" placeholder="https://facebook.com/mountnutra"
+                class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+            </div>
+          </div>
+        </div>
+
+        <!-- Whatsapp Contact Button -->
+        <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6">
+          <div class="flex items-center justify-between mb-5 pb-3 border-b border-slate-100">
+            <div>
+              <h2 class="text-base font-bold text-slate-900 font-heading">WhatsApp Floating Button</h2>
+              <p class="text-xs text-slate-500">Show a floating WhatsApp contact button on the storefront.</p>
+            </div>
+            <button onclick="saveWhatsappButton()"
+              class="px-6 py-2 bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold rounded-xl shadow transition">Save</button>
+          </div>
+          <div class="flex items-center gap-3">
+            <input type="checkbox" id="whatsappBtnActive" checked class="w-4 h-4 rounded">
+            <label for="whatsappBtnActive" class="text-sm font-semibold text-slate-700">Show WhatsApp floating button on
+              storefront</label>
+          </div>
+          <p class="text-xs text-slate-400 mt-2">Uses the WhatsApp number saved in Social Links above.</p>
+        </div>
+        <!-- Razorpay Settings -->
+        <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 mt-6">
+          <div class="flex items-center justify-between mb-5 pb-3 border-b border-slate-100">
+            <div>
+              <h2 class="text-base font-bold text-slate-900 font-heading">Payment Gateway (Razorpay)</h2>
+              <p class="text-xs text-slate-500">Enable actual card payments by providing your Razorpay Test API Key.</p>
+            </div>
+            <button onclick="saveRazorpayKey()" class="px-6 py-2 bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold rounded-xl shadow transition">Save Key</button>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Razorpay API Key (Test Mode)</label>
+            <input type="text" id="razorpayKeyInput" placeholder="rzp_test_..."
+              class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50 font-mono">
+            <p class="text-[10px] text-slate-400 mt-2">If left blank, the Card payment option will simulate a success response.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ADMIN PROFILE TAB -->
+      <div id="tab-adminprofile" class="tab-content hidden animate-fade-in space-y-6">
+        
+        <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6">
+          <div class="flex items-center justify-between mb-5 pb-3 border-b border-slate-100">
+            <div>
+              <h2 class="text-base font-bold text-slate-900 font-heading">Admin Profile</h2>
+              <p class="text-xs text-slate-500">Update your name and login email.</p>
+            </div>
+            <button onclick="saveAdminProfile()" class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow transition">Save Profile</button>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Admin Name</label>
+              <input type="text" id="adminProfileName" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Login Email</label>
+              <input type="email" id="adminProfileEmail" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6">
+          <div class="flex items-center justify-between mb-5 pb-3 border-b border-slate-100">
+            <div>
+              <h2 class="text-base font-bold text-slate-900 font-heading">Change Password</h2>
+              <p class="text-xs text-slate-500">Update your admin portal login password.</p>
+            </div>
+            <button onclick="saveAdminPassword()" class="px-6 py-2 bg-rose-600 hover:bg-rose-700 text-white text-sm font-bold rounded-xl shadow transition">Change Password</button>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Current Password</label>
+              <input type="password" id="adminCurrentPass" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">New Password</label>
+              <input type="password" id="adminNewPass" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Confirm New Password</label>
+              <input type="password" id="adminConfirmPass" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Product Edit Modal -->
+  <div id="editProductModal"
+    class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity">
+    <div
+      class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col scale-95 transition-transform"
+      id="editProductModalBox">
+      <div class="flex items-center justify-between p-6 border-b border-slate-100 shrink-0">
+        <h3 id="editModalTitle" class="text-lg font-bold text-slate-900">Edit Product Details</h3>
+        <button onclick="closeEditModal()"
+          class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto flex-1">
+        <form id="editProductForm" class="space-y-4">
+          <input type="hidden" id="editProdId">
+
+          <!-- Image Upload Area -->
+          <div class="p-4 border border-dashed border-slate-300 rounded-xl bg-slate-50 flex items-center gap-4">
+            <div id="editProdImagePreview"
+              class="w-16 h-16 rounded-lg bg-white border border-slate-200 flex items-center justify-center overflow-hidden shrink-0">
+              <i data-lucide="image" class="w-6 h-6 text-slate-300"></i>
+            </div>
+            <div class="flex-1">
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Product Image</label>
+              <input type="file" id="editProdImageFile" accept="image/*" onchange="previewImage(event)"
+                class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer">
+              <p class="text-[10px] text-slate-400 mt-1">Select a square transparent PNG (Max 500KB)</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Product Name</label>
+              <input type="text" id="editProdName"
+                class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Subtitle</label>
+              <input type="text" id="editProdSub"
+                class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Full Flavour String</label>
+              <input type="text" id="editProdFlavour" placeholder="e.g. Lemon Flavour"
+                class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Short Flavour Name</label>
+              <input type="text" id="editProdFlavourShort" placeholder="e.g. Lemon"
+                class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Price (₹)</label>
+              <input type="number" id="editProdPrice"
+                class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Original Price (₹)</label>
+              <input type="number" id="editProdOrigPrice"
+                class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Rating</label>
+              <input type="number" step="0.1" id="editProdRating"
+                class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Badge Text</label>
+            <input type="text" id="editProdBadge"
+              class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:border-blue-500 focus:outline-none bg-slate-50">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Description</label>
+            <textarea id="editProdDesc" rows="3"
+              class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:border-blue-500 focus:outline-none bg-slate-50"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="p-6 border-t border-slate-100 shrink-0 flex justify-end gap-3 bg-slate-50 rounded-b-2xl">
+        <button onclick="closeEditModal()"
+          class="px-5 py-2 rounded-xl text-sm font-semibold text-slate-600 bg-white border border-slate-200 shadow-sm hover:bg-slate-50 transition">Cancel</button>
+        <button onclick="saveProductEdits()"
+          class="px-5 py-2 rounded-xl text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-md transition">Save
+          Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+
+</html>

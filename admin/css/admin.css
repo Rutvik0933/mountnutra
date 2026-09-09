@@ -1,0 +1,52 @@
+/* Admin Panel Specific Styles */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.nav-link {
+  color: #64748b;
+}
+.nav-link:hover {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+.nav-link.active {
+  background-color: #eff6ff;
+  color: #0252cf;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modal animations */
+#editProductModal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+#editProductModal.open #editProductModalBox {
+  transform: scale(1);
+}
